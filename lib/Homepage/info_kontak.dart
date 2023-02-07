@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:myporto/services.dart';
@@ -37,7 +40,9 @@ class InfoKontak extends StatelessWidget {
                     aspectRatio: 1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5),
-                      child: Lottie.asset(e['images']!),
+                      child: kIsWeb || Platform.isWindows
+                          ? Image.asset('assets/icon/${e['name']}.png')
+                          : Lottie.asset(e['images']!),
                     ),
                   ),
                 ),

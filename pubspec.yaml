@@ -57,7 +57,21 @@ dependencies:
   flutter_web_data_table: ^1.0.0
   dismissible_page: ^1.0.1
   animated_size_and_fade: ^3.0.0
+  webview_flutter: ^3.0.4
   nil: ^1.1.1
+  file_saver: ^0.1.1
+  syncfusion_flutter_xlsio: ^20.4.44-beta
+  permission_handler: ^10.2.0
+  path_provider: ^2.0.12
+  open_file: ^3.2.1
+  syncfusion_flutter_pdfviewer: ^20.4.44
+  # extended_image: ^6.3.4
+  image_downloader: ^0.31.0
+  flutter_downloader: ^1.10.1+2
+  universal_html: ^2.0.8
+  flutter_dropzone: ^3.0.5
+  cached_network_image: ^3.2.3
+  # seo_renderer: ^0.6.0X
 
 dev_dependencies:
   flutter_test:

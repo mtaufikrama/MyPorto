@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -21,50 +22,71 @@ class FotoProfil extends StatelessWidget {
             context,
             mobile: Lottie.asset(
               'assets/lottie/background.json',
-              width: 500,
+              width: MediaQuery.of(context).size.width,
               fit: BoxFit.contain,
             ),
             desktop: Lottie.asset(
               'assets/lottie/background.json',
-              height: 500,
+              height: MediaQuery.of(context).size.height,
               fit: BoxFit.contain,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(5),
-            child: GestureDetector(
-              onTap: () => context.pushTransparentRoute(
-                transitionDuration: const Duration(milliseconds: 500),
-                reverseTransitionDuration: const Duration(milliseconds: 500),
-                ImagePage(
-                  imageUrl: image,
-                  tag: 'fotoprofil',
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: GestureDetector(
+                onTap: () => context.pushTransparentRoute(
+                  ImagePage(imageUrl: image, tag: 'fotoprofil'),
+                  transitionDuration: const Duration(milliseconds: 500),
+                  reverseTransitionDuration: const Duration(milliseconds: 500),
                 ),
-              ),
-              child: Hero(
-                tag: 'fotoprofil',
-                child: Image.asset(
-                  image,
+                child: Hero(
+                  tag: 'fotoprofil',
+                  child: ImageNet(
+                    image,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             ),
           ),
-          // IconButton(
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => const TablePage(),
-          //       ),
-          //     );
-          //   },
-          //   icon: const Icon(
-          //     Icons.table_chart_rounded,
-          //     color: Colors.white,
-          //   ),
-          // ),
         ],
       ),
+    );
+  }
+}
+
+class ImageNet extends StatefulWidget {
+  const ImageNet(
+    this.image, {
+    super.key,
+    this.fit,
+    this.height,
+    this.width,
+  });
+  final String image;
+  final BoxFit? fit;
+  final double? height;
+  final double? width;
+
+  @override
+  State<ImageNet> createState() => _ImageNetState();
+}
+
+class _ImageNetState extends State<ImageNet> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CachedNetworkImage(
+      imageUrl: widget.image,
+      fit: widget.fit ?? BoxFit.cover,
+      progressIndicatorBuilder: (context, url, downloadProgress) =>
+          CircularProgressIndicator(value: downloadProgress.progress),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

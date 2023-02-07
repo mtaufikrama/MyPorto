@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:lottie/lottie.dart';
 import 'package:translator/translator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -46,27 +47,23 @@ dynamic responsive(
 List<Map<String, dynamic>> listCertificate = [
   {
     'title': 'Sertifikat Kompetensi MSIB',
-    'image': 'assets/sertif/competency.jpg',
-    // 'body': 'mantapssss',
-    'logo': 'assets/logo/kampus_merdeka.png',
+    'image': Sertif.competency,
+    'logo': Logo.kampusMerdeka,
   },
   {
     'title': 'Sertifikat MSIB',
-    'image': 'assets/sertif/msib.jpg',
-    // 'body': 'mantapssss',
-    'logo': 'assets/logo/kampus_merdeka.png',
+    'image': Sertif.msib,
+    'logo': Logo.kampusMerdeka,
   },
   {
     'title': 'Sertifikat Webinar IoT',
-    'image': 'assets/sertif/iot.jpg',
-    // 'body': 'mantapssss',
-    'logo': 'assets/logo/edspert.png',
+    'image': Sertif.iot,
+    'logo': Logo.edspert,
   },
   {
     'title': 'Sertifikat Seminar HALO FTI',
-    'image': 'assets/sertif/halofti.jpg',
-    // 'body': 'mantapssss',
-    'logo': 'assets/logo/bemfti.jpg',
+    'image': Sertif.halofti,
+    'logo': Logo.bemfti,
   },
 ];
 
@@ -96,60 +93,58 @@ final List<Map<String, String>> infoKontak = [
   {
     'name': 'LinkedIn',
     'images': 'assets/lottie/linkedin.json',
-    'url': 'https://www.linkedin.com/in/muhammad-taufik-ramadhan',
+    'url': Url.linkedin,
   },
   {
     'name': 'Website',
     'images': 'assets/lottie/website.json',
-    'url': 'https://metir.my.id/',
+    'url': Url.website,
   },
   {
     'name': 'Gmail',
     'images': 'assets/lottie/gmail.json',
-    'url':
-        'https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=mtaufikrama14@gmail.com',
+    'url': Url.gmail,
   },
   {
     'name': 'GitHub',
     'images': 'assets/lottie/github.json',
-    'url': 'https://github.com/mtaufikrama',
+    'url': Url.github,
   },
   {
     'name': 'WhatsApp',
     'images': 'assets/lottie/whatsapp.json',
-    'url':
-        'https://wa.me/6285831391581?text=I saw your website. I want to hire you in my company.',
+    'url': Url.whatsapp,
   },
   {
     'name': 'Twitter',
     'images': 'assets/lottie/twitter.json',
-    'url': 'https://twitter.com/MTaufikRama',
+    'url': Url.twitter,
   },
   {
     'name': 'YouTube',
     'images': 'assets/lottie/youtube.json',
-    'url': 'https://www.youtube.com/@mtaufikrama624',
+    'url': Url.youtube,
   },
 ];
 
 final List<Map<String, String>> listpendidikan = [
   {
     'sekolah': 'SMAN 102 Jakarta',
-    'image': 'assets/pendidikan/sman102.png',
+    'image': Pendidikan.sman102,
     'jurusan': 'MIPA',
     'tahun': '2016 - 2019',
-    'url': 'https://sman102jakarta.sch.id/',
+    'url': Url.sman102,
   },
   {
     'sekolah': 'Universitas Gunadarma',
-    'image': 'assets/pendidikan/gunadarma.png',
+    'image': Pendidikan.gunadarma,
     'jurusan': 'Teknik Informatika',
     'tahun': '2019 - Sekarang',
-    'url': 'https://www.gunadarma.ac.id/',
+    'url': Url.gunadarma,
   },
 ];
 
-List<Map<String, dynamic>> listBahasa = [
+final List<Map<String, dynamic>> listBahasa = [
   {
     'kode': 'en',
     'bahasa': 'Bahasa Inggris',
@@ -172,12 +167,46 @@ List<Map<String, dynamic>> listBahasa = [
   },
 ];
 
-class Images {
-  String fotoProfil(String fotoprofil) => 'assets/foto/$fotoprofil.png';
-  String icon(String icon) => 'assets/icon/$icon.png';
-  String logo(String logo) => 'assets/logo/$logo.png';
-  String pendidikan(String pendidikan) => 'assets/pendidikan/$pendidikan.png';
-  String sertif(String sertif) => 'assets/sertif/$sertif.jpg';
+class Url {
+  static String gunadarma = 'https://www.gunadarma.ac.id/';
+  static String sman102 = 'https://sman102jakarta.sch.id/';
+  static String youtube = 'https://www.youtube.com/@mtaufikrama624';
+  static String linkedin =
+      'https://www.linkedin.com/in/muhammad-taufik-ramadhan';
+  static String twitter = 'https://twitter.com/MTaufikRama';
+  static String whatsapp =
+      'https://wa.me/6285831391581?text=I saw your website. I want to hire you in my company.';
+  static String github = 'https://github.com/mtaufikrama';
+  static String website = 'http://metir.my.id/';
+  static String gmail =
+      'https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=mtaufikrama14@gmail.com';
+}
+
+String driveGoogle(String id) =>
+    'https://drive.google.com/uc?export=view&id=$id';
+
+class Sertif {
+  static String msib = driveGoogle('1RKfZXQMjf1IYXN4rXWtGPHHrZrcLLFuP');
+  static String iot = driveGoogle('124uXhb_7yDtngi8giBhLNOp8vmsZc90w');
+  static String halofti = driveGoogle('1sjDIfA-WWkrzi1B3U6XU255wWG_yRipu');
+  static String competency = driveGoogle('1GQhxFAGlrzZg33lJK3hnsWu6KP4gd8c4');
+}
+
+class Logo {
+  static String msib = driveGoogle('1rBj2T4yaAlPnWkk7U-BWkpLYwj60f4Sk');
+  static String kampusMerdeka =
+      driveGoogle('19HDdh6IYGFiRaqTVrcmWkCGtT9JGpSSg');
+  static String edspert = driveGoogle('16AFaWWe9b9ndPTA9r9b0JHYsAOvl9hUj');
+  static String bemfti = driveGoogle('1xbKRpF1ZNHFz7ZHcp1NT-w3yNJj6hvCo');
+}
+
+class Foto {
+  static String fotoprofil = driveGoogle('1xyiJTPB_zcbf-fTJckx37Urcm8g7tacL');
+}
+
+class Pendidikan {
+  static String gunadarma = driveGoogle('1DELTMWn_Yqws9b5CGOUJeXY2OURcgXwD');
+  static String sman102 = driveGoogle('1KkDbifIaotKLI1oH4WevfbyXR7ebWgO3');
 }
 
 class Storages {
@@ -252,6 +281,48 @@ Widget teksLanguage(
           textAlign: textAlign,
         );
 }
+
+class LottieImage extends StatelessWidget {
+  const LottieImage({
+    super.key,
+    this.image,
+    required this.lottie,
+    required this.height,
+    required this.width,
+    required this.fit,
+  });
+
+  final String lottie;
+  final String? image;
+  final double? height;
+  final double? width;
+  final BoxFit? fit;
+
+  @override
+  Widget build(BuildContext context) {
+    return kIsWeb || Platform.isWindows
+        ? image != null
+            ? Image.network(
+                image!,
+                height: height,
+                width: width,
+                fit: fit,
+              )
+            : Lottie.asset(
+                lottie,
+                height: height,
+                width: width,
+                fit: fit,
+              )
+        : Lottie.asset(
+            lottie,
+            height: height,
+            width: width,
+            fit: fit,
+          );
+  }
+}
+
 
 // class AdsApp {
 //   String testDevice = 'pub-5022314744850119';

@@ -54,5 +54,27 @@
       });
     });
   </script>
+  <!-- <script>
+    const regExp = new RegExp("bot|google|baidu|bing|msn|teoma|slurp|yandex", "i");
+    if (regExp.test(navigator.userAgent)) {
+      window.flutterWebRenderer = "html";
+    }
+  </script> -->
+  <script type="text/javascript">
+    window.flutterWebRenderer = "html";
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.min.js"></script>
+  <script type="text/javascript">
+     pdfjsLib.GlobalWorkerOptions.workerSrc = "//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.worker.min.js";
+  </script>
+  <!-- <script type="text/javascript">
+    let useHtml;
+    if(useHtml) {
+      window.flutterWebRenderer = "html";
+    } else {
+      window.flutterWebRenderer = "canvaskit";
+    }
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script> -->
 </body>
 </html>

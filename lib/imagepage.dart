@@ -1,5 +1,8 @@
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
+
+import 'package:myporto/Homepage/fotoprofil.dart';
+import 'package:myporto/download.dart';
 import 'package:myporto/services.dart';
 
 class ImagePage extends StatelessWidget {
@@ -7,13 +10,11 @@ class ImagePage extends StatelessWidget {
 
   final String imageUrl;
   final String tag;
+
   @override
   Widget build(BuildContext context) {
     return DismissiblePage(
-      onDismissed: () {
-        print('ondissmiss');
-        Navigator.of(context).pop();
-      },
+      onDismissed: () => Navigator.of(context).pop(),
       startingOpacity: 0.7,
       isFullScreen: false,
       backgroundColor: Colors.black,
@@ -25,23 +26,25 @@ class ImagePage extends StatelessWidget {
             context,
             mobile: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Hero(
+                  tag: tag,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: ImageNet(
+                      imageUrl,
+                    ),
+                  ),
+                ),
                 IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () async {
+                    Navigator.of(context).pop();
+                    // await downloadImage(imageUrl);
+                  },
                   icon: const Icon(
                     Icons.cancel_outlined,
                     color: Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Hero(
-                    tag: tag,
-                    child: Image.asset(
-                      imageUrl,
-                      fit: BoxFit.contain,
-                    ),
                   ),
                 ),
               ],
@@ -54,14 +57,16 @@ class ImagePage extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.8,
                   child: Hero(
                     tag: tag,
-                    child: Image.asset(
+                    child: ImageNet(
                       imageUrl,
                       fit: BoxFit.contain,
                     ),
                   ),
                 ),
                 IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () async {
+                    Navigator.of(context).pop();
+                  },
                   icon: const Icon(
                     Icons.cancel_outlined,
                     color: Colors.white,
@@ -75,16 +80,3 @@ class ImagePage extends StatelessWidget {
     );
   }
 }
-      // Scaffold(
-      //   backgroundColor: Colors.transparent,
-      //   body: ListTile(
-      //     title: Hero(
-      //       tag: tag,
-      //       child: Image.asset(
-      //         imageUrl,
-      //         fit: BoxFit.contain,
-      //         height: 200,
-      //       ),
-      //     ),
-      //   ),
-      // ),
